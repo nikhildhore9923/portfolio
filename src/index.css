@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Dark mode default - Deep Obsidian */
+  html.dark {
+    color-scheme: dark;
+    background-color: #07090E;
+    color: #F8FAFC;
+  }
+
+  /* Light mode - Clean Luxury Gallery Paper */
+  html:not(.dark) {
+    color-scheme: light;
+    background-color: #FAFAFC;
+    color: #0F172A;
+  }
+
+  body {
+    @apply antialiased selection:bg-sky-500 selection:text-white transition-colors duration-200;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Subtle architectural dot grid */
+.grid-bg-dark {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.grid-bg-light {
+  background-image: radial-gradient(rgba(15, 23, 42, 0.035) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Ambient animated background effects */
+@keyframes ambient-float {
+  0%, 100% {
+    transform: translateY(0px) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) scale(1.04) rotate(0.8deg);
+  }
+}
+
+@keyframes ambient-pulse-slow {
+  0%, 100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+.animate-ambient-float {
+  animation: ambient-float 16s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: ambient-pulse-slow 8s ease-in-out infinite;
+}
+
+.radial-mask-center {
+  mask-image: radial-gradient(ellipse 70% 65% at 50% 50%, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 65% at 50% 50%, black 30%, transparent 80%);
+}
+
+.radial-mask-hero {
+  mask-image: radial-gradient(ellipse 85% 70% at 65% 45%, black 25%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 70% at 65% 45%, black 25%, transparent 75%);
+}
+
+.radial-mask-poly {
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 50%, black 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 50%, black 20%, transparent 75%);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #0A0C10;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #1E293B;
+  border-radius: 4px;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+html:not(.dark) ::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+html:not(.dark) ::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+html:not(.dark) ::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
