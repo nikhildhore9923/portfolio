@@ -194,7 +194,7 @@ export default function Navbar({ onOpenResume, onOpenCommandMenu, theme, onToggl
               className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold text-white bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 transition-colors shadow-sm active:scale-95"
             >
               <FileText className="w-4 h-4 text-sky-400 dark:text-sky-600" />
-              <span>View Resume (PDF)</span>
+              <span>View & Download Resume (PDF)</span>
             </button>
 
             <div className="grid grid-cols-2 gap-2 pt-1">
