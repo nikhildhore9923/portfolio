@@ -23,12 +23,41 @@ export default function Contact({ onShowToast }) {
     setTimeout(() => setCopied(false), 2500);
   };
 
-  const handleSendMessage = (e) => {
-    e.preventDefault();
+  const getSubjectText = () => subject || 'Software Engineering Opportunity';
+  const getMessageText = () => message || 'Hi Nikhil,\n\nI reviewed your portfolio and would like to connect regarding a software engineering role.';
+
+  // Guaranteed to work in any browser without needing desktop Outlook/Mail app
+  const handleSendGmail = (e) => {
+    if (e) e.preventDefault();
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+      PERSONAL_INFO.email
+    )}&su=${encodeURIComponent(getSubjectText())}&body=${encodeURIComponent(getMessageText())}`;
+    window.open(gmailUrl, '_blank', 'noopener,noreferrer');
+    if (onShowToast) {
+      onShowToast('Opening Gmail compose window...');
+    }
+  };
+
+  // Standard mailto handler for devices with native mail apps configured
+  const handleSendMailto = (e) => {
+    if (e) e.preventDefault();
     const mailtoUrl = `mailto:${PERSONAL_INFO.email}?subject=${encodeURIComponent(
-      subject || 'Software Engineering Opportunity'
-    )}&body=${encodeURIComponent(message || 'Hi Nikhil,\n\nI reviewed your portfolio and would like to connect regarding a software engineering role.')}`;
+      getSubjectText()
+    )}&body=${encodeURIComponent(getMessageText())}`;
     window.location.href = mailtoUrl;
+    if (onShowToast) {
+      onShowToast('Opening default email app...');
+    }
+  };
+
+  // Quick 1-click copy for manual dispatch anywhere
+  const handleCopyDraft = (e) => {
+    if (e) e.preventDefault();
+    const draft = `To: ${PERSONAL_INFO.email}\nSubject: ${getSubjectText()}\n\n${getMessageText()}`;
+    navigator.clipboard.writeText(draft);
+    if (onShowToast) {
+      onShowToast('Draft message copied to clipboard!');
+    }
   };
 
   return (
@@ -205,7 +234,7 @@ export default function Contact({ onShowToast }) {
                 </div>
               </div>
 
-              <form onSubmit={handleSendMessage} className="space-y-2.5 text-xs font-mono">
+              <form onSubmit={handleSendGmail} className="space-y-2.5 text-xs font-mono">
                 <div>
                   <label className="block text-slate-600 dark:text-slate-400 mb-1 text-[11px]">Subject / Opportunity:</label>
                   <input
@@ -228,18 +257,45 @@ export default function Contact({ onShowToast }) {
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold text-white bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100 transition-all shadow-sm active:scale-[0.99]"
-                >
-                  <Send className="w-3.5 h-3.5" />
-                  <span>Launch Email Client</span>
-                </button>
+                {/* Triple Dispatch Options: Web Gmail (100% reliable) + Default Client + Copy */}
+                <div className="pt-1 space-y-2">
+                  <button
+                    type="button"
+                    onClick={handleSendGmail}
+                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold text-white bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100 transition-all shadow-sm active:scale-[0.99]"
+                  >
+                    <Send className="w-3.5 h-3.5 text-emerald-400 dark:text-emerald-600" />
+                    <span>Send via Gmail (Web Browser)</span>
+                    <ExternalLink className="w-3 h-3 opacity-60" />
+                  </button>
+
+                  <div className="grid grid-cols-2 gap-2">
+                    <button
+                      type="button"
+                      onClick={handleSendMailto}
+                      className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-[11px] font-medium text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-white/[0.04] hover:bg-slate-200 dark:hover:bg-white/[0.08] border border-slate-200 dark:border-white/[0.08] transition-colors active:scale-95"
+                      title="Open in your computer or phone's installed email app"
+                    >
+                      <Mail className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" />
+                      <span>Default Mail App</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={handleCopyDraft}
+                      className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-[11px] font-medium text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-white/[0.04] hover:bg-slate-200 dark:hover:bg-white/[0.08] border border-slate-200 dark:border-white/[0.08] transition-colors active:scale-95"
+                      title="Copy complete pre-filled draft to clipboard"
+                    >
+                      <Copy className="w-3.5 h-3.5 text-amber-500" />
+                      <span>Copy Draft Note</span>
+                    </button>
+                  </div>
+                </div>
               </form>
             </div>
 
             <p className="mt-2 text-[10px] font-mono text-center text-slate-400 dark:text-slate-500">
-              Directly opens your default email client with pre-filled recipient and subject.
+              Opens directly in Gmail web compose or your default email client with recipient and draft pre-filled.
             </p>
           </div>
 
