@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BUILD_PHILOSOPHY } from '../data/portfolioData';
 import { CheckCircle2, Shield, Wrench, Bug, Rocket, Terminal } from 'lucide-react';
+import bgPolyGeometry from '../assets/bg-poly-geometry.jpg';
 
 export default function HowIBuild() {
   const [activeStep, setActiveStep] = useState(0);
@@ -11,7 +12,7 @@ export default function HowIBuild() {
       {/* Ambient Animated Geometric Background */}
       <div className="absolute top-10 right-0 w-[600px] sm:w-[800px] h-[450px] sm:h-[550px] pointer-events-none radial-mask-poly overflow-hidden z-0 opacity-20 dark:opacity-30">
         <img
-          src="/bg-poly-geometry.jpg"
+          src={bgPolyGeometry}
           alt="Geometric Architecture Mesh"
           className="w-full h-full object-cover object-center animate-ambient-float mix-blend-screen select-none filter contrast-125"
         />
