@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Cpu, Code2, Server, Database, Brain, Cloud, Check } from 'lucide-react';
 
 export default function Skills() {
+  const [mobileCategory, setMobileCategory] = useState('all');
+
   const skillCategories = [
     {
       title: "Languages",
@@ -89,8 +91,94 @@ export default function Skills() {
           </p>
         </div>
 
-        {/* 5 Clean Domain Panels (Responsive Bento Layout) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3 sm:gap-4 items-stretch">
+        {/* ========================================================================= */}
+        {/* MOBILE SKILLS VIEW (< lg): Category Filter Bar + Clean Responsive Cards    */}
+        {/* ========================================================================= */}
+        <div className="block lg:hidden w-full space-y-3.5">
+          {/* Mobile Category Filter Bar */}
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+            <button
+              onClick={() => setMobileCategory('all')}
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
+                mobileCategory === 'all'
+                  ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-sm'
+                  : 'bg-white dark:bg-[#10131A] text-slate-600 dark:text-slate-400 border border-slate-200/90 dark:border-white/[0.08]'
+              }`}
+            >
+              All Domains (5)
+            </button>
+            {skillCategories.map((cat, cIdx) => (
+              <button
+                key={cIdx}
+                onClick={() => setMobileCategory(cat.title.toLowerCase())}
+                className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
+                  mobileCategory === cat.title.toLowerCase()
+                    ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-sm'
+                    : 'bg-white dark:bg-[#10131A] text-slate-600 dark:text-slate-400 border border-slate-200/90 dark:border-white/[0.08]'
+                }`}
+              >
+                {cat.title}
+              </button>
+            ))}
+          </div>
+
+          {/* Filtered Category Cards on Mobile */}
+          <div className="space-y-3 text-left">
+            {skillCategories
+              .filter((cat) => mobileCategory === 'all' || mobileCategory === cat.title.toLowerCase())
+              .map((cat, cIdx) => {
+                const IconComponent = cat.icon;
+                return (
+                  <div
+                    key={cIdx}
+                    className="p-4 rounded-2xl bg-white dark:bg-[#10131A] border border-slate-200/90 dark:border-white/[0.08] shadow-sm animate-fadeIn"
+                  >
+                    <div className="flex items-center justify-between pb-2 mb-2.5 border-b border-slate-100 dark:border-white/[0.06]">
+                      <div className="flex items-center gap-2">
+                        <div className="w-7 h-7 rounded-lg bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20 flex items-center justify-center shrink-0">
+                          <IconComponent className="w-4 h-4" />
+                        </div>
+                        <h3 className="font-bold text-sm text-slate-900 dark:text-white">
+                          {cat.title}
+                        </h3>
+                      </div>
+                      <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 px-2 py-0.5 rounded bg-slate-100 dark:bg-white/[0.04]">
+                        {cat.skills.length} skills
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {cat.skills.map((s, sIdx) => (
+                        <div
+                          key={sIdx}
+                          className="p-2.5 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200/80 dark:border-white/[0.05]"
+                        >
+                          <div className="flex items-center justify-between">
+                            <span className="font-semibold text-xs text-slate-900 dark:text-white">
+                              {s.name}
+                            </span>
+                            {s.highlight && (
+                              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-sky-500/10 text-sky-700 dark:text-sky-400 font-semibold">
+                                Core
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 leading-snug">
+                            {s.note}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+          </div>
+        </div>
+
+        {/* ========================================================================= */}
+        {/* DESKTOP SKILLS VIEW (lg+): Full Multi-Column Bento Layout                   */}
+        {/* ========================================================================= */}
+        <div className="hidden lg:grid lg:grid-cols-6 gap-4 items-stretch">
           
           {/* Card 1: Languages (lg: 2 cols) */}
           <div className="lg:col-span-2 p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#10131A] border border-slate-200/90 dark:border-white/[0.08] shadow-sm text-left flex flex-col justify-between hover:border-slate-300 dark:hover:border-white/15 transition-all">

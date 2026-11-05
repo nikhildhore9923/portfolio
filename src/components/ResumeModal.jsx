@@ -53,7 +53,7 @@ export default function ResumeModal({ isOpen, onClose }) {
         </div>
 
         {/* Printable Resume Document Canvas */}
-        <div className="p-4 sm:p-8 md:p-10 overflow-y-auto space-y-5 bg-white dark:bg-[#0B0E14] text-slate-800 dark:text-slate-200 font-sans text-xs leading-relaxed print:bg-white print:text-black print:p-0">
+        <div className="p-3.5 sm:p-8 md:p-10 overflow-y-auto space-y-4 sm:space-y-5 bg-white dark:bg-[#0B0E14] text-slate-800 dark:text-slate-200 font-sans text-xs leading-relaxed print:bg-white print:text-black print:p-0">
           
           {/* Header */}
           <div className="text-center pb-3 border-b border-slate-300 dark:border-white/[0.15] print:border-black/30">

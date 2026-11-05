@@ -7,6 +7,7 @@ import SparqInteractiveDemo from './SparqInteractiveDemo';
 export default function Projects({ onSelectProject }) {
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
   const [showDemo, setShowDemo] = useState(false);
+  const [mobileInsightTab, setMobileInsightTab] = useState('problem');
 
   const activeProject = PROJECTS[activeProjectIndex];
 
@@ -114,12 +115,74 @@ export default function Projects({ onSelectProject }) {
             {activeProject.summary}
           </p>
 
-          {/* 3 Clear, Student-Appropriate Insights Aligned with Resume */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5 sm:gap-3 mb-3.5 sm:mb-4">
-            
+          {/* Insights View: Segmented Controller on Mobile (< md), 3-Column Bento on Desktop (md+) */}
+          
+          {/* Mobile Tab Pills (< md) */}
+          <div className="flex md:hidden items-center justify-between p-1 rounded-xl bg-slate-100 dark:bg-[#07090E]/60 border border-slate-200/80 dark:border-white/[0.06] mb-2.5">
+            {[
+              { id: 'problem', label: 'Problem Solved' },
+              { id: 'solution', label: 'Engineering' },
+              { id: 'features', label: 'Key Features' }
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setMobileInsightTab(tab.id)}
+                className={`flex-1 py-1.5 px-2 rounded-lg text-[11px] font-semibold transition-all text-center ${
+                  mobileInsightTab === tab.id
+                    ? 'bg-white dark:bg-[#12151C] text-slate-900 dark:text-white shadow-sm ring-1 ring-slate-200 dark:ring-white/10'
+                    : 'text-slate-500 dark:text-slate-400'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Mobile Insight Card Display (< md) */}
+          <div className="block md:hidden mb-3.5">
+            {mobileInsightTab === 'problem' && (
+              <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-[#07090E]/60 border border-sky-500/20 text-xs animate-fadeIn">
+                <span className="font-mono text-sky-600 dark:text-sky-400 block mb-1 font-semibold uppercase tracking-wider text-[10px]">
+                  Problem Solved
+                </span>
+                <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-xs">
+                  {activeProject.id === 'pulse' 
+                    ? 'Unstructured customer feedback is tedious to review manually. Businesses need fast automated sentiment classification to catch negative feedback before churn occurs.'
+                    : 'Traditional web apps rely on manual refreshes or HTTP polling, creating clock desynchronization, latency cheating, and poor multiplayer experience.'}
+                </p>
+              </div>
+            )}
+            {mobileInsightTab === 'solution' && (
+              <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-[#07090E]/60 border border-emerald-500/20 text-xs animate-fadeIn">
+                <span className="font-mono text-emerald-600 dark:text-emerald-400 block mb-1 font-semibold uppercase tracking-wider text-[10px]">
+                  Engineering Solution
+                </span>
+                <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-xs">
+                  {activeProject.id === 'pulse'
+                    ? 'Built a React dashboard with a Node.js/Express API and a separate FastAPI service for ML (Scikit-learn TF-IDF + Logistic Regression), using MySQL for storage.'
+                    : 'Engineered a Kahoot-style quiz game using Node.js and Socket.io, where the server handles timers, scoring, and answer verification to strictly prevent cheating.'}
+                </p>
+              </div>
+            )}
+            {mobileInsightTab === 'features' && (
+              <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-[#07090E]/60 border border-amber-500/20 text-xs animate-fadeIn">
+                <span className="font-mono text-amber-600 dark:text-amber-400 block mb-1 font-semibold uppercase tracking-wider text-[10px]">
+                  Key Features & Fallback
+                </span>
+                <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-xs">
+                  {activeProject.id === 'pulse'
+                    ? 'Groq API (Llama 3) for executive summaries, plus a local fallback heuristic ensuring 100% responsiveness when the ML service is slow or cold-starting.'
+                    : 'Integrated Groq API for instant 4-option trivia generation, JWT authentication for saving quizzes, and SQLite WAL mode with Vercel & Render deployment.'}
+                </p>
+              </div>
+            )}
+          </div>
+
+          {/* Desktop 3-Column Insight Grid (md+) */}
+          <div className="hidden md:grid md:grid-cols-3 gap-3 mb-4">
             {/* Box 1: Core Problem & Challenge */}
-            <div className="p-3 sm:p-3.5 rounded-xl bg-slate-50 dark:bg-[#07090E]/60 border border-slate-200/80 dark:border-white/[0.06] text-xs">
-              <span className="font-mono text-sky-600 dark:text-sky-400 block mb-1 font-semibold uppercase tracking-wider text-[10px] sm:text-[11px]">
+            <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-[#07090E]/60 border border-slate-200/80 dark:border-white/[0.06] text-xs">
+              <span className="font-mono text-sky-600 dark:text-sky-400 block mb-1 font-semibold uppercase tracking-wider text-[11px]">
                 Problem Solved
               </span>
               <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-xs">
@@ -130,8 +193,8 @@ export default function Projects({ onSelectProject }) {
             </div>
 
             {/* Box 2: Architecture & Implementation */}
-            <div className="p-3 sm:p-3.5 rounded-xl bg-slate-50 dark:bg-[#07090E]/60 border border-slate-200/80 dark:border-white/[0.06] text-xs">
-              <span className="font-mono text-emerald-600 dark:text-emerald-400 block mb-1 font-semibold uppercase tracking-wider text-[10px] sm:text-[11px]">
+            <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-[#07090E]/60 border border-slate-200/80 dark:border-white/[0.06] text-xs">
+              <span className="font-mono text-emerald-600 dark:text-emerald-400 block mb-1 font-semibold uppercase tracking-wider text-[11px]">
                 Engineering Solution
               </span>
               <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-xs">
@@ -142,8 +205,8 @@ export default function Projects({ onSelectProject }) {
             </div>
 
             {/* Box 3: Key Features & Resilience */}
-            <div className="p-3 sm:p-3.5 rounded-xl bg-slate-50 dark:bg-[#07090E]/60 border border-slate-200/80 dark:border-white/[0.06] text-xs">
-              <span className="font-mono text-amber-600 dark:text-amber-400 block mb-1 font-semibold uppercase tracking-wider text-[10px] sm:text-[11px]">
+            <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-[#07090E]/60 border border-slate-200/80 dark:border-white/[0.06] text-xs">
+              <span className="font-mono text-amber-600 dark:text-amber-400 block mb-1 font-semibold uppercase tracking-wider text-[11px]">
                 Key Features & Fallback
               </span>
               <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-xs">

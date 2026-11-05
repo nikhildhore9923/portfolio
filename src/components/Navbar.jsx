@@ -1,5 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { FileText, Command, Menu, X, Sun, Moon } from 'lucide-react';
+import { 
+  FileText, 
+  Command, 
+  Menu, 
+  X, 
+  Sun, 
+  Moon, 
+  User, 
+  Sparkles, 
+  Cpu, 
+  GraduationCap, 
+  Mail, 
+  Github, 
+  Linkedin,
+  ArrowRight
+} from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import profilePhoto from '../assets/nikhil-dhore.jpg';
 
@@ -16,11 +31,11 @@ export default function Navbar({ onOpenResume, onOpenCommandMenu, theme, onToggl
   }, []);
 
   const navLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Education', href: '#education' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'About', href: '#about', icon: User },
+    { name: 'Projects', href: '#projects', icon: Sparkles },
+    { name: 'Skills', href: '#skills', icon: Cpu },
+    { name: 'Education', href: '#education', icon: GraduationCap },
+    { name: 'Contact', href: '#contact', icon: Mail },
   ];
 
   return (
@@ -139,24 +154,38 @@ export default function Navbar({ onOpenResume, onOpenCommandMenu, theme, onToggl
         </div>
       </div>
 
-      {/* Mobile Drawer (Properly positioned absolute below top bar) */}
+      {/* Mobile Drawer (Native App Sheet Styling) */}
       {mobileMenuOpen && (
-        <div className="sm:hidden absolute top-14 left-0 right-0 w-full bg-white/95 dark:bg-[#0C1017]/95 backdrop-blur-xl border-b border-slate-200 dark:border-white/[0.08] shadow-2xl px-4 py-4 space-y-3 animate-fadeIn">
-          <nav className="flex flex-col space-y-1">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between px-3.5 py-2.5 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.05] rounded-xl transition-colors text-left"
-              >
-                <span>{link.name}</span>
-                <span className="text-slate-400 text-xs">→</span>
-              </a>
-            ))}
+        <div className="sm:hidden absolute top-14 left-0 right-0 w-full bg-white/95 dark:bg-[#0C1017]/95 backdrop-blur-2xl border-b border-slate-200/90 dark:border-white/[0.08] shadow-2xl px-4 py-4 space-y-3.5 animate-fadeIn">
+          {/* Quick Monogram Header */}
+          <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-white/[0.06] text-xs font-mono text-slate-500">
+            <span>NAVIGATION MENU</span>
+            <span className="text-emerald-600 dark:text-emerald-400 font-semibold">● Live Portfolio</span>
+          </div>
+
+          <nav className="flex flex-col space-y-1.5">
+            {navLinks.map((link) => {
+              const IconComp = link.icon;
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-between px-3.5 py-2.5 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.06] rounded-xl transition-all text-left"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <div className="p-1.5 rounded-lg bg-slate-100 dark:bg-white/[0.05] text-sky-600 dark:text-sky-400">
+                      <IconComp className="w-4 h-4" />
+                    </div>
+                    <span>{link.name}</span>
+                  </div>
+                  <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
+                </a>
+              );
+            })}
           </nav>
           
-          <div className="pt-2 border-t border-slate-200 dark:border-white/[0.08]">
+          <div className="pt-2.5 border-t border-slate-100 dark:border-white/[0.06] space-y-2">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
@@ -164,9 +193,30 @@ export default function Navbar({ onOpenResume, onOpenCommandMenu, theme, onToggl
               }}
               className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold text-white bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 transition-colors shadow-sm active:scale-95"
             >
-              <FileText className="w-4 h-4" />
+              <FileText className="w-4 h-4 text-sky-400 dark:text-sky-600" />
               <span>View Resume (PDF)</span>
             </button>
+
+            <div className="grid grid-cols-2 gap-2 pt-1">
+              <a
+                href={PERSONAL_INFO.github}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-center gap-1.5 p-2 rounded-xl text-[11px] font-mono text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.06]"
+              >
+                <Github className="w-3.5 h-3.5" />
+                <span>GitHub</span>
+              </a>
+              <a
+                href={PERSONAL_INFO.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-center gap-1.5 p-2 rounded-xl text-[11px] font-mono text-sky-700 dark:text-sky-400 bg-sky-50 dark:bg-sky-500/10 border border-sky-500/20"
+              >
+                <Linkedin className="w-3.5 h-3.5" />
+                <span>LinkedIn</span>
+              </a>
+            </div>
           </div>
         </div>
       )}

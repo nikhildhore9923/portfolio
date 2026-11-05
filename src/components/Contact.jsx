@@ -234,26 +234,26 @@ export default function Contact({ onShowToast }) {
                 </div>
               </div>
 
-              <form onSubmit={handleSendGmail} className="space-y-2.5 text-xs font-mono">
+              <form onSubmit={handleSendGmail} className="space-y-3 text-xs font-mono">
                 <div>
-                  <label className="block text-slate-600 dark:text-slate-400 mb-1 text-[11px]">Subject / Opportunity:</label>
+                  <label className="block text-slate-600 dark:text-slate-400 mb-1 text-[11px] font-medium">Subject / Opportunity:</label>
                   <input
                     type="text"
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
                     placeholder="e.g. Software Engineer Role / Campus Placement Inquiry"
-                    className="w-full text-xs sm:text-xs bg-slate-50 dark:bg-[#07090E]/60 border border-slate-200/80 dark:border-white/[0.08] rounded-xl p-2.5 text-slate-900 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+                    className="w-full text-sm bg-slate-50 dark:bg-[#07090E]/60 border border-slate-200/80 dark:border-white/[0.08] rounded-xl p-2.5 sm:p-3 text-slate-900 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-slate-600 dark:text-slate-400 mb-1 text-[11px]">Message / Job Description:</label>
+                  <label className="block text-slate-600 dark:text-slate-400 mb-1 text-[11px] font-medium">Message / Job Description:</label>
                   <textarea
-                    rows={2}
+                    rows={3}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Hi Nikhil, we reviewed your work on Sparq and Pulse and would like to discuss..."
-                    className="w-full text-xs sm:text-xs bg-slate-50 dark:bg-[#07090E]/60 border border-slate-200/80 dark:border-white/[0.08] rounded-xl p-2.5 text-slate-900 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 resize-none"
+                    className="w-full text-sm bg-slate-50 dark:bg-[#07090E]/60 border border-slate-200/80 dark:border-white/[0.08] rounded-xl p-2.5 sm:p-3 text-slate-900 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 resize-none"
                   />
                 </div>
 
@@ -262,18 +262,18 @@ export default function Contact({ onShowToast }) {
                   <button
                     type="button"
                     onClick={handleSendGmail}
-                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold text-white bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100 transition-all shadow-sm active:scale-[0.99]"
+                    className="w-full min-h-[44px] inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-white bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100 transition-all shadow-sm active:scale-[0.99]"
                   >
-                    <Send className="w-3.5 h-3.5 text-emerald-400 dark:text-emerald-600" />
+                    <Send className="w-4 h-4 text-emerald-400 dark:text-emerald-600" />
                     <span>Send via Gmail (Web Browser)</span>
-                    <ExternalLink className="w-3 h-3 opacity-60" />
+                    <ExternalLink className="w-3.5 h-3.5 opacity-60" />
                   </button>
 
                   <div className="grid grid-cols-2 gap-2">
                     <button
                       type="button"
                       onClick={handleSendMailto}
-                      className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-[11px] font-medium text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-white/[0.04] hover:bg-slate-200 dark:hover:bg-white/[0.08] border border-slate-200 dark:border-white/[0.08] transition-colors active:scale-95"
+                      className="min-h-[40px] inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-[11px] font-medium text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-white/[0.04] hover:bg-slate-200 dark:hover:bg-white/[0.08] border border-slate-200 dark:border-white/[0.08] transition-colors active:scale-95"
                       title="Open in your computer or phone's installed email app"
                     >
                       <Mail className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" />
@@ -283,7 +283,7 @@ export default function Contact({ onShowToast }) {
                     <button
                       type="button"
                       onClick={handleCopyDraft}
-                      className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-[11px] font-medium text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-white/[0.04] hover:bg-slate-200 dark:hover:bg-white/[0.08] border border-slate-200 dark:border-white/[0.08] transition-colors active:scale-95"
+                      className="min-h-[40px] inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-[11px] font-medium text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-white/[0.04] hover:bg-slate-200 dark:hover:bg-white/[0.08] border border-slate-200 dark:border-white/[0.08] transition-colors active:scale-95"
                       title="Copy complete pre-filled draft to clipboard"
                     >
                       <Copy className="w-3.5 h-3.5 text-amber-500" />
