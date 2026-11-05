@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowUp, Github, Linkedin } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
+import profilePhoto from '../assets/nikhil-dhore.jpg';
 
 export default function Footer({ onOpenResume }) {
   const scrollToTop = () => {
@@ -16,7 +17,7 @@ export default function Footer({ onOpenResume }) {
           <div className="flex items-center gap-2.5 sm:gap-3">
             <div className="w-8 h-8 rounded-xl overflow-hidden border border-slate-200 dark:border-white/10 shrink-0 shadow-sm">
               <img
-                src="/nikhil-dhore.jpg"
+                src={profilePhoto}
                 alt="Nikhil Dhore"
                 className="w-full h-full object-cover object-top"
               />

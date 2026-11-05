@@ -11,6 +11,7 @@ import {
   Check 
 } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
+import profilePhoto from '../assets/nikhil-dhore.jpg';
 
 export default function Hero({ onOpenResume, onShowToast }) {
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -168,7 +169,7 @@ export default function Hero({ onOpenResume, onShowToast }) {
               <div className="relative rounded-xl sm:rounded-2xl overflow-hidden mb-2.5 sm:mb-3 border border-slate-200/80 dark:border-white/10 shadow-sm bg-slate-100 dark:bg-white/[0.02]">
                 <div className="w-full aspect-[4/4] overflow-hidden">
                   <img
-                    src="/nikhil-dhore.jpg"
+                    src={profilePhoto}
                     alt="Nikhil Dhore"
                     className="w-full h-full object-cover object-top filter brightness-[0.99] contrast-[1.01]"
                   />

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FileText, Command, Menu, X, Sun, Moon } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
+import profilePhoto from '../assets/nikhil-dhore.jpg';
 
 export default function Navbar({ onOpenResume, onOpenCommandMenu, theme, onToggleTheme }) {
   const [scrolled, setScrolled] = useState(false);
@@ -40,7 +41,7 @@ export default function Navbar({ onOpenResume, onOpenCommandMenu, theme, onToggl
           >
             <div className="relative flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-xl overflow-hidden bg-slate-100 dark:bg-white/[0.05] border border-slate-300 dark:border-white/10 group-hover:border-sky-500 transition-all shadow-sm shrink-0">
               <img
-                src="/nikhil-dhore.jpg"
+                src={profilePhoto}
                 alt="Nikhil Dhore"
                 className="w-full h-full object-cover object-top"
               />
