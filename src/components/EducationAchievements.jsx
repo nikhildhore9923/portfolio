@@ -9,18 +9,18 @@ export default function EducationAchievements() {
   return (
     <section 
       id="education" 
-      className="min-h-screen pt-16 pb-8 flex flex-col justify-center border-b border-slate-200/80 dark:border-white/[0.06] transition-colors relative overflow-hidden"
+      className="min-h-screen lg:min-h-screen py-12 sm:py-16 lg:py-0 lg:pt-16 lg:pb-8 flex flex-col justify-start lg:justify-center border-b border-slate-200/80 dark:border-white/[0.06] transition-colors relative overflow-hidden"
     >
       {/* Subtle Architectural Dot Grid */}
       <div className="absolute inset-0 grid-bg-light dark:grid-bg-dark pointer-events-none opacity-40" />
 
       {/* Atmospheric Ambient Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-sky-500/[0.03] dark:bg-sky-500/[0.04] rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[700px] h-[300px] sm:h-[350px] bg-sky-500/[0.03] dark:bg-sky-500/[0.04] rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 my-auto">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-4 sm:mb-5">
+        <div className="text-center max-w-3xl mx-auto mb-3.5 sm:mb-5">
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/[0.08] text-slate-700 dark:text-slate-300 text-xs font-mono mb-1.5">
             <GraduationCap className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" />
             <span>EDUCATION & CREDENTIALS</span>
@@ -29,22 +29,22 @@ export default function EducationAchievements() {
             Education & Qualifications
           </h2>
           <p className="mt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl mx-auto">
-            Academic degree, national entrance qualification, and foundational education credentials.
+            Academic degree, national entrance qualification, and foundational education credentials from my resume.
           </p>
         </div>
 
-        {/* 2x2 Bento Grid: Essential Qualifications Only (Equal Heights & Zero Empty Space) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3.5 sm:gap-4 items-stretch">
+        {/* 2x2 Bento Grid: Essential Qualifications (Mobile Responsive) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 items-stretch">
           
           {/* Card 1: Primary Degree B.Tech */}
-          <div className="p-5 rounded-2xl bg-white dark:bg-[#10131A] border border-slate-200/90 dark:border-white/[0.08] shadow-sm text-left hover:border-slate-300 dark:hover:border-white/15 transition-all flex flex-col justify-between">
+          <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#10131A] border border-slate-200/90 dark:border-white/[0.08] shadow-sm text-left hover:border-slate-300 dark:hover:border-white/15 transition-all flex flex-col justify-between">
             <div>
               <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
                 <div>
                   <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-500/10 text-sky-700 dark:text-sky-400 font-mono text-[11px] font-semibold mb-1 border border-sky-500/20">
                     CURRENT DEGREE (FINAL YEAR)
                   </div>
-                  <h3 className="font-bold text-base sm:text-lg text-slate-900 dark:text-white tracking-tight">
+                  <h3 className="font-bold text-sm sm:text-base lg:text-lg text-slate-900 dark:text-white tracking-tight">
                     {btech.degree}
                   </h3>
                   <p className="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400 mt-0.5">
@@ -59,7 +59,7 @@ export default function EducationAchievements() {
                 )}
               </div>
 
-              <div className="flex flex-wrap items-center gap-3.5 text-xs font-mono text-slate-500 dark:text-slate-400 mb-2.5">
+              <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-slate-500 dark:text-slate-400 mb-2">
                 <span className="flex items-center gap-1">
                   <Calendar className="w-3.5 h-3.5 text-sky-500" />
                   {btech.period}
@@ -71,13 +71,13 @@ export default function EducationAchievements() {
               </div>
             </div>
 
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed pt-2.5 border-t border-slate-100 dark:border-white/[0.06]">
-              Specializing in Artificial Intelligence & Machine Learning with hands-on coursework in Java, Data Structures, OOP, and Full-Stack Web Development.
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed pt-2 border-t border-slate-100 dark:border-white/[0.06]">
+              Specializing in Artificial Intelligence & Machine Learning with strong foundations in Java, Data Structures, OOP, and practical full-stack projects.
             </p>
           </div>
 
           {/* Card 2: GATE Examination Card */}
-          <div className="p-5 rounded-2xl bg-white dark:bg-[#10131A] border border-amber-500/30 dark:border-amber-500/25 shadow-sm text-left hover:border-amber-500/50 transition-all flex flex-col justify-between">
+          <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#10131A] border border-amber-500/30 dark:border-amber-500/25 shadow-sm text-left hover:border-amber-500/50 transition-all flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between gap-2 mb-2">
                 <span className="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/30">
@@ -88,7 +88,7 @@ export default function EducationAchievements() {
                 </span>
               </div>
 
-              <h3 className="font-bold text-base sm:text-lg text-slate-900 dark:text-white tracking-tight">
+              <h3 className="font-bold text-sm sm:text-base lg:text-lg text-slate-900 dark:text-white tracking-tight">
                 {ACHIEVEMENTS[0].title}
               </h3>
               <p className="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400 mt-0.5 mb-2">
@@ -96,11 +96,11 @@ export default function EducationAchievements() {
               </p>
 
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                Cleared the competitive national-level engineering entrance exam for CS & IT, testing core fundamentals: Algorithms, Operating Systems, Computer Networks, and DBMS.
+                Cleared the competitive national-level engineering entrance exam for CS & IT, evaluating core fundamentals: Algorithms, Operating Systems, Computer Networks, and DBMS.
               </p>
             </div>
 
-            <div className="pt-2.5 mt-2.5 border-t border-slate-100 dark:border-white/[0.06] flex items-center justify-between text-xs font-mono">
+            <div className="pt-2 mt-2 border-t border-slate-100 dark:border-white/[0.06] flex items-center justify-between text-xs font-mono">
               <span className="text-slate-500 dark:text-slate-400">Examination Status:</span>
               <span className="text-emerald-700 dark:text-emerald-400 font-semibold flex items-center gap-1">
                 <Check className="w-3.5 h-3.5" />
@@ -109,9 +109,9 @@ export default function EducationAchievements() {
             </div>
           </div>
 
-          {/* Card 3: Schooling Credentials (HSC & SSC side-by-side) */}
+          {/* Card 3: Schooling Credentials (HSC & SSC responsive grid) */}
           <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#10131A] border border-slate-200/90 dark:border-white/[0.08] shadow-sm text-left hover:border-slate-300 dark:hover:border-white/15 transition-all flex flex-col justify-between">
-            <div className="grid grid-cols-2 gap-3 h-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 h-full">
               {secondarySchooling.map((edu, idx) => (
                 <div
                   key={idx}
@@ -151,7 +151,7 @@ export default function EducationAchievements() {
                 </span>
               </div>
 
-              <h4 className="font-bold text-sm sm:text-base text-slate-900 dark:text-white">
+              <h4 className="font-bold text-xs sm:text-base text-slate-900 dark:text-white">
                 {ACHIEVEMENTS[1].title}
               </h4>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 mb-2">
@@ -164,7 +164,7 @@ export default function EducationAchievements() {
             </div>
 
             <div className="flex flex-wrap gap-1.5 pt-2 border-t border-slate-100 dark:border-white/[0.06]">
-              {['React', 'Node.js', 'Express', 'JavaScript', 'SQL'].map((t, i) => (
+              {['React', 'Node.js', 'Express', 'JavaScript', 'HTML & CSS', 'SQL'].map((t, i) => (
                 <span key={i} className="px-2 py-0.5 rounded bg-slate-100 dark:bg-white/[0.04] text-slate-700 dark:text-slate-300 text-xs font-mono">
                   {t}
                 </span>
